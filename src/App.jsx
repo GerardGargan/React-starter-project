@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import { CORE_CONCEPTS } from './data.js';
 import CoreConcept from './components/CoreConcept.jsx';
 
@@ -5,8 +7,10 @@ import Header from './components/Header/Header.jsx';
 import TabButton from './components/TabButton.jsx';
 
 function App() {
+  const [ selectedText, setSelectedText ] = useState('Please select a topic');
+
   function handleSelect(selectedButton) {
-    console.log(selectedButton);
+    setSelectedText(selectedButton);
   }
 
   return (
@@ -31,6 +35,7 @@ function App() {
             <TabButton onSelect={() => handleSelect('state')}>State</TabButton>
           </menu>
         </section>
+        {selectedText}
       </main>
     </div>
   );
